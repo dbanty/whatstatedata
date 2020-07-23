@@ -1,4 +1,4 @@
-use phf::{phf_map};
+use phf::phf_map;
 
 pub static STATES_BY_NAME: phf::Map<&'static str, &'static str> = phf_map! {
   "Alabama" => "AL",
@@ -52,3 +52,10 @@ pub static STATES_BY_NAME: phf::Map<&'static str, &'static str> = phf_map! {
   "Wisconsin" => "WI",
   "Wyoming" => "WY",
 };
+
+pub static STATES: [&str; 50] = [
+    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS",
+    "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY",
+    "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV",
+    "WI", "WY",
+];

@@ -1,15 +1,6 @@
-[package]
-name = "whatstatedata"
-version = "0.1.0"
-authors = ["Dylan Anthony <contact@dylananthony.com>"]
-edition = "2018"
+[workspace]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-csv = "1.1.1"
-serde_json = "1.0.44"
-async-std = "1.4.0"
-anyhow = "1.0.26"
-serde = { version="1.0.104", features=["derive"]}
-phf = { version = "0.8.0", features=["macros"]}
+members = [
+    "solar_prices",
+    "states",
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "source": "solar_prices.json",
+    "name": "Solar Installation Cost",
+    "data_type": "number",
+    "source_url": "https://emp.lbl.gov/tracking-the-sun",
+    "description": "The average cost of installing solar panels over the last 5 years.",
+    "units": "$/KW"
+  }
+]

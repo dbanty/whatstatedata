@@ -1,1 +1,4 @@
 /target
+raw_data/
+generated/
+.idea/
