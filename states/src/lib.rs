@@ -1,3 +1,5 @@
+#![forbid(unsafe_code)]
+
 use phf::phf_map;
 
 pub static STATES_BY_NAME: phf::Map<&'static str, &'static str> = phf_map! {

@@ -3,4 +3,5 @@
 members = [
     "solar_prices",
     "states",
+    "eia",
 ]

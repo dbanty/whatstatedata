@@ -1,10 +1,12 @@
-use anyhow::{anyhow, Result};
-use serde::Deserialize;
-use time::Date;
+#![forbid(unsafe_code)]
 
 use std::collections::HashMap;
 use std::fs::File;
 use std::{fs, thread};
+
+use anyhow::{anyhow, Result};
+use serde::Deserialize;
+use time::Date;
 
 #[derive(Debug, Deserialize)]
 struct Record {

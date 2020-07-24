@@ -1,0 +1,17 @@
+[package]
+name = "eia"
+version = "0.1.0"
+authors = ["Dylan Anthony <contact@dylananthony.com>"]
+edition = "2018"
+description = "Download and parse data from https://www.eia.gov/developer/"
+
+[dependencies]
+async-std = {version="1.6.2", features=["attributes"]}
+surf = "2.0.0-alpha.4"
+serde = { version="1.0.114", features=["derive"]}
+serde_json = "1.0.56"
+dotenv = "0.15.0"
+anyhow = "1.0.31"
+states = {path="../states"}
+futures = "0.3.5"
+
