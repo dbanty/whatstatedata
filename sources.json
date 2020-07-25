@@ -21,5 +21,12 @@
     "data_type": "percent",
     "source_url": "https://www.eia.gov/opendata/qb.php?category=40236",
     "description": "Percent of energy consumption that was renewable in 2018."
+  },
+  {
+    "source": "national_parks.json",
+    "name": "National Parks",
+    "data_type": "number",
+    "source_url": "https://www.nps.gov/subjects/developer/index.htm",
+    "description": "Total number of national parks in the state."
   }
 ]

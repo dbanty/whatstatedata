@@ -3,6 +3,7 @@ name = "states"
 version = "0.1.0"
 authors = ["Dylan Anthony <contact@dylananthony.com>"]
 edition = "2018"
+description = "Static structs containing state names / codes"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

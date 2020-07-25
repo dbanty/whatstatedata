@@ -980,6 +980,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "nps"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-std",
+ "dotenv",
+ "futures 0.3.5",
+ "serde",
+ "serde_json",
+ "states",
+ "surf",
+]
+
+[[package]]
 name = "num_cpus"
 version = "1.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
