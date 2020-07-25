@@ -14,5 +14,12 @@
     "source_url": "http://www.eia.gov/environment/emissions/state/analysis/",
     "description": "Total carbon dioxide emissions from all sectors in million metric tons from 2017.",
     "units": "mmt CO2"
+  },
+  {
+    "source": "percent_renewable.json",
+    "name": "Renewable Energy",
+    "data_type": "percent",
+    "source_url": "https://www.eia.gov/opendata/qb.php?category=40236",
+    "description": "Percent of energy consumption that was renewable in 2018."
   }
 ]
