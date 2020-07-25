@@ -28,5 +28,26 @@
     "data_type": "number",
     "source_url": "https://www.nps.gov/subjects/developer/index.htm",
     "description": "Total number of national parks in the state."
+  },
+  {
+    "source": "income_tax.json",
+    "name": "Income Tax",
+    "data_type": "percent",
+    "source_url": "https://catalog.data.gov/dataset/choose-maryland-compare-states-taxes-0f1f5",
+    "description": "Personal income tax rate."
+  },
+  {
+    "source": "corporate_income_tax.json",
+    "name": "Corporate Income Tax",
+    "data_type": "percent",
+    "source_url": "https://catalog.data.gov/dataset/choose-maryland-compare-states-taxes-0f1f5",
+    "description": "Corporate income tax rate."
+  },
+  {
+    "source": "sales_tax.json",
+    "name": "Sales Tax",
+    "data_type": "percent",
+    "source_url": "https://catalog.data.gov/dataset/choose-maryland-compare-states-taxes-0f1f5",
+    "description": "Sales income tax rate."
   }
 ]
