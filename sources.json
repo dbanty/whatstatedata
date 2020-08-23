@@ -49,5 +49,96 @@
     "data_type": "percent",
     "source_url": "https://catalog.data.gov/dataset/choose-maryland-compare-states-taxes-0f1f5",
     "description": "Sales income tax rate."
+  },
+  {
+    "source": "unemployment.json",
+    "name": "Unemployment",
+    "data_type": "percent",
+    "source_url": "https://opendata.maryland.gov/Business-and-Economy/Choose-Maryland-Compare-States-Workforce/5esm-neyf",
+    "description": "Unemployment rate."
+  },
+  {
+    "source": "pop_change.json",
+    "name": "Population Change",
+    "data_type": "percent",
+    "source_url": "https://opendata.maryland.gov/Demographic/Choose-Maryland-Compare-States-Demographics/8mc4-hxm7",
+    "description": "Population change over one year."
+  },
+  {
+    "source": "median_age.json",
+    "name": "Median Age",
+    "data_type": "number",
+    "source_url": "https://opendata.maryland.gov/Demographic/Choose-Maryland-Compare-States-Demographics/8mc4-hxm7",
+    "description": "Median Age.",
+    "units": "years"
+  },
+  {
+    "source": "pop_density.json",
+    "name": "Population Density",
+    "data_type": "number",
+    "source_url": "https://opendata.maryland.gov/Demographic/Choose-Maryland-Compare-States-Demographics/8mc4-hxm7",
+    "description": "Population per square mile of land area.",
+    "units": "/mi^2"
+  },
+  {
+    "source": "median_household_income.json",
+    "name": "Median Household Income",
+    "data_type": "money",
+    "source_url": "https://opendata.maryland.gov/Demographic/Choose-Maryland-Compare-States-Demographics/8mc4-hxm7",
+    "description": "Median household income in 2018 inflation-adjusted dollars."
+  },
+  {
+    "source": "percapita_personal_income.json",
+    "name": "Per Capita Income",
+    "data_type": "money",
+    "source_url": "https://opendata.maryland.gov/Demographic/Choose-Maryland-Compare-States-Demographics/8mc4-hxm7",
+    "description": "Income received before the deduction of taxes."
+  },
+  {
+    "source": "poverty_rate.json",
+    "name": "Poverty Rate",
+    "data_type": "percent",
+    "source_url": "https://opendata.maryland.gov/Demographic/Choose-Maryland-Compare-States-Demographics/8mc4-hxm7",
+    "description": "Percent of people below the poverty level."
+  },
+  {
+    "source": "annual_temp.json",
+    "name": "Average Temperature",
+    "data_type": "number",
+    "units": "ºF",
+    "source_url": "https://www.ncdc.noaa.gov/cdo-web/datasets",
+    "description": "Long-term averages of annual average temperature from 1981 to 2010."
+  },
+  {
+    "source": "autumn_temp.json",
+    "name": "Average Autumn Temperature",
+    "data_type": "number",
+    "units": "ºF",
+    "source_url": "https://www.ncdc.noaa.gov/cdo-web/datasets",
+    "description": "Long-term averages of autumn average temperature from 1981 to 2010."
+  },
+  {
+    "source": "spring_temp.json",
+    "name": "Average Spring Temperature",
+    "data_type": "number",
+    "units": "ºF",
+    "source_url": "https://www.ncdc.noaa.gov/cdo-web/datasets",
+    "description": "Long-term averages of spring average temperature from 1981 to 2010."
+  },
+  {
+    "source": "summer_temp.json",
+    "name": "Average Summer Temperature",
+    "data_type": "number",
+    "units": "ºF",
+    "source_url": "https://www.ncdc.noaa.gov/cdo-web/datasets",
+    "description": "Long-term averages of summer average temperature from 1981 to 2010."
+  },
+  {
+    "source": "winter_temp.json",
+    "name": "Average Winter Temperature",
+    "data_type": "number",
+    "units": "ºF",
+    "source_url": "https://www.ncdc.noaa.gov/cdo-web/datasets",
+    "description": "Long-term averages of winter average temperature from 1981 to 2010."
   }
 ]
