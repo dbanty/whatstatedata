@@ -8,5 +8,6 @@ The data sets are all hosted on https://opendata.maryland.gov and use JSON forma
 - income_tax.json
 - corporate_income_tax.json
 - sales_tax.json
+- unemployment.json
 
 [a bunch of data sets]: https://catalog.data.gov/dataset?q=choose+maryland&sort=views_recent+desc&publisher=opendata.maryland.gov 
