@@ -3,10 +3,12 @@ use std::str::FromStr;
 use anyhow::{anyhow, Result};
 
 pub use demographic::demographic;
+pub use quality_of_life::quality_of_life;
 pub use taxes::taxes;
 pub use workforce::workforce;
 
 mod demographic;
+mod quality_of_life;
 mod taxes;
 mod workforce;
 

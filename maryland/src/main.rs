@@ -1,9 +1,9 @@
 #![forbid(unsafe_code)]
 
 use anyhow::Result;
-use futures::future::try_join3;
+use futures::future::try_join4;
 
-use maryland::{demographic, taxes, workforce};
+use maryland::{demographic, quality_of_life, taxes, workforce};
 
 #[async_std::main]
 async fn main() {
@@ -14,6 +14,6 @@ async fn main() {
 }
 
 async fn run() -> Result<()> {
-    try_join3(taxes(), workforce(), demographic()).await?;
+    try_join4(taxes(), workforce(), demographic(), quality_of_life()).await?;
     Ok(())
 }

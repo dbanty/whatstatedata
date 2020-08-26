@@ -102,6 +102,13 @@
     "description": "Percent of people below the poverty level."
   },
   {
+    "source": "broadband_internet.json",
+    "name": "Internet Coverage",
+    "data_type": "percent",
+    "source_url": "https://opendata.maryland.gov/Health-and-Human-Services/Choose-Maryland-Compare-States-Quality-Of-Life/cz6x-aq2i",
+    "description": "Percent of population with access to broadband internet."
+  },
+  {
     "source": "annual_temp.json",
     "name": "Average Temperature",
     "data_type": "number",
