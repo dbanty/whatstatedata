@@ -90,7 +90,6 @@ fn run() -> Result<()> {
         "generated/solar_prices.json",
         serde_json::to_string(&averages)?,
     )?;
-    dbg!(averages);
     Ok(())
 }
 

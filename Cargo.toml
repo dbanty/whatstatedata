@@ -7,4 +7,5 @@ members = [
     "nps",
     "maryland",
     "noaa",
+    "cost_of_living",
 ]

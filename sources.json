@@ -147,5 +147,54 @@
     "units": "ºF",
     "source_url": "https://www.ncdc.noaa.gov/cdo-web/datasets",
     "description": "Long-term averages of winter average temperature from 1981 to 2010."
+  },
+  {
+    "source": "cost_rank.json",
+    "name": "Cost Rank",
+    "data_type": "integer",
+    "source_url": "https://meric.mo.gov/data/cost-living-data-series",
+    "description": "The rank of the state by overall cost of living. 1 is the cheapest state to live in, 50 is the most expensive."
+  },
+  {
+    "source": "cost_index.json",
+    "name": "Cost Index",
+    "data_type": "number",
+    "source_url": "https://meric.mo.gov/data/cost-living-data-series",
+    "description": "Cost Index, where the overall for the country is 100. A higher number indicates a higher cost."
+  },
+  {
+    "source": "grocery_cost_index.json",
+    "name": "Grocery Cost Index",
+    "data_type": "number",
+    "source_url": "https://meric.mo.gov/data/cost-living-data-series",
+    "description": "Cost Index for groceries, where the overall for the country is 100. A higher number indicates a higher cost."
+  },
+  {
+    "source": "health_cost_index.json",
+    "name": "Health Cost Index",
+    "data_type": "number",
+    "source_url": "https://meric.mo.gov/data/cost-living-data-series",
+    "description": "Cost Index for health, where the overall for the country is 100. A higher number indicates a higher cost."
+  },
+  {
+    "source": "housing_cost_index.json",
+    "name": "Housing Cost Index",
+    "data_type": "number",
+    "source_url": "https://meric.mo.gov/data/cost-living-data-series",
+    "description": "Cost Index for housing, where the overall for the country is 100. A higher number indicates a higher cost."
+  },
+  {
+    "source": "transportation_cost_index.json",
+    "name": "Transportation Cost Index",
+    "data_type": "number",
+    "source_url": "https://meric.mo.gov/data/cost-living-data-series",
+    "description": "Cost Index for transportation, where the overall for the country is 100. A higher number indicates a higher cost."
+  },
+  {
+    "source": "utilities_cost_index.json",
+    "name": "Utilities Cost Index",
+    "data_type": "number",
+    "source_url": "https://meric.mo.gov/data/cost-living-data-series",
+    "description": "Cost Index for utilities, where the overall for the country is 100. A higher number indicates a higher cost."
   }
 ]
