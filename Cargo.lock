@@ -436,7 +436,7 @@ dependencies = [
  "percent-encoding",
  "rand",
  "sha2",
- "time 0.2.19",
+ "time 0.2.21",
  "version_check",
 ]
 
@@ -1974,7 +1974,7 @@ dependencies = [
  "serde",
  "serde_json",
  "states",
- "time 0.2.19",
+ "time 0.2.21",
 ]
 
 [[package]]
@@ -2170,9 +2170,9 @@ dependencies = [
 
 [[package]]
 name = "time"
-version = "0.2.19"
+version = "0.2.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "80c1a1fd93112fc50b11c43a1def21f926be3c18884fad676ea879572da070a1"
+checksum = "2c2e31fb28e2a9f01f5ed6901b066c1ba2333c04b64dc61254142bafcb3feb2c"
 dependencies = [
  "const_fn",
  "libc",
