@@ -3,11 +3,12 @@
 use std::collections::HashMap;
 use std::env;
 
-use anyhow::{anyhow, Result};
-use async_std::fs;
+use anyhow::Result;
 use dotenv::dotenv;
 use futures::future::{try_join, try_join_all};
+use reqwest::Client;
 use serde::Deserialize;
+use tokio::fs;
 
 use states::STATES;
 
@@ -27,7 +28,7 @@ impl Response {
     }
 }
 
-#[async_std::main]
+#[tokio::main]
 async fn main() {
     dotenv().ok();
     match run().await {
@@ -38,12 +39,19 @@ async fn main() {
 
 async fn run() -> Result<()> {
     let api_key = env::var("EIA_KEY")?;
-    try_join(co2_emissions(&api_key), consumption(&api_key)).await?;
+    let client = Client::new();
+    try_join(
+        co2_emissions(&api_key, &client),
+        consumption(&api_key, &client),
+    )
+    .await?;
     Ok(())
 }
 
-async fn co2_emissions(api_key: &str) -> Result<()> {
-    let futures = STATES.iter().map(|state| get_emissions(&api_key, state));
+async fn co2_emissions(api_key: &str, client: &Client) -> Result<()> {
+    let futures = STATES
+        .iter()
+        .map(|state| get_emissions(api_key, state, client));
     let result: HashMap<&'static str, f64> = try_join_all(futures).await?.into_iter().collect();
     fs::write(
         "generated/co2_emissions.json",
@@ -53,23 +61,23 @@ async fn co2_emissions(api_key: &str) -> Result<()> {
     Ok(())
 }
 
-async fn get_emissions(api_key: &str, state: &'static str) -> Result<(&'static str, f64)> {
+async fn get_emissions<'a>(
+    api_key: &str,
+    state: &'a str,
+    client: &Client,
+) -> Result<(&'a str, f64)> {
     let uri = format!(
         "https://api.eia.gov/series/?api_key={}&series_id=EMISS.CO2-TOTV-TT-TO-{}.A&start=2017",
         api_key, state
     );
-    let mut response = surf::get(uri)
-        .await
-        .map_err(|e| anyhow!("Could not fetch data: {}", e))?;
-    let json_body: Response = response
-        .body_json()
-        .await
-        .map_err(|e| anyhow!("Could not parse JSON {}", e))?;
+    let json_body = client.get(&uri).send().await?.json::<Response>().await?;
     Ok((state, json_body.get_value()))
 }
 
-async fn consumption(api_key: &str) -> Result<()> {
-    let futures = STATES.iter().map(|state| get_consumption(&api_key, state));
+async fn consumption(api_key: &str, client: &Client) -> Result<()> {
+    let futures = STATES
+        .iter()
+        .map(|state| get_consumption(&api_key, state, client));
     let result: HashMap<&'static str, f64> = try_join_all(futures).await?.into_iter().collect();
     fs::write(
         "generated/percent_renewable.json",
@@ -79,7 +87,11 @@ async fn consumption(api_key: &str) -> Result<()> {
     Ok(())
 }
 
-async fn get_consumption(api_key: &str, state: &'static str) -> Result<(&'static str, f64)> {
+async fn get_consumption<'a>(
+    api_key: &str,
+    state: &'a str,
+    client: &Client,
+) -> Result<(&'a str, f64)> {
     let total_uri = format!(
         "http://api.eia.gov/series/?api_key={}&series_id=SEDS.TETCB.{}.A&start=2018",
         api_key, state
@@ -88,11 +100,14 @@ async fn get_consumption(api_key: &str, state: &'static str) -> Result<(&'static
         "http://api.eia.gov/series/?api_key={}&series_id=SEDS.RETCB.{}.A&start=2018",
         api_key, state
     );
-    let total_future = surf::get(total_uri).recv_json::<Response>();
-    let renewable_future = surf::get(renewable_uri).recv_json::<Response>();
-    let (total_data, renewable_data) = try_join(total_future, renewable_future)
-        .await
-        .map_err(|e| anyhow!("Error getting consumption: {}", e))?;
+    let total_future = client.get(&total_uri).send();
+    let renewable_future = client.get(&renewable_uri).send();
+    let (total_response, renewable_response) = try_join(total_future, renewable_future).await?;
+    let (total_data, renewable_data) = try_join(
+        total_response.json::<Response>(),
+        renewable_response.json::<Response>(),
+    )
+    .await?;
 
     let percent_renewable = renewable_data.get_value() / total_data.get_value();
     Ok((state, percent_renewable))

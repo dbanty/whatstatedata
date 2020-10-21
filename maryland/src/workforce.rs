@@ -1,8 +1,8 @@
 use std::collections::HashMap;
 
 use anyhow::{anyhow, Result};
-use async_std::fs;
 use serde::Deserialize;
+use tokio::fs;
 
 use states::STATES_BY_NAME;
 
@@ -55,10 +55,10 @@ pub async fn workforce() -> Result<()> {
 
 async fn get_workforce() -> Result<Vec<WorkforceParsed>> {
     let uri = format!("{}{}", BASE_URL, PATH);
-    Ok(surf::get(uri)
-        .recv_json::<Vec<WorkforceData>>()
-        .await
-        .map_err(|e| anyhow!("Could not fetch workforce data: {}", e))?
+    Ok(reqwest::get(&uri)
+        .await?
+        .json::<Vec<WorkforceData>>()
+        .await?
         .into_iter()
         .filter_map(|data| WorkforceParsed::try_from(data).ok())
         .collect::<Vec<WorkforceParsed>>())

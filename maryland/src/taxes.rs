@@ -1,9 +1,9 @@
 use std::collections::HashMap;
 
 use anyhow::{anyhow, Result};
-use async_std::fs;
 use futures::future::try_join3;
 use serde::Deserialize;
+use tokio::fs;
 
 use states::STATES_BY_NAME;
 
@@ -78,10 +78,10 @@ pub async fn taxes() -> Result<()> {
 
 async fn get_taxes() -> Result<Vec<TaxDataParsed>> {
     let uri = format!("{}{}", BASE_URL, PATH);
-    Ok(surf::get(uri)
-        .recv_json::<Vec<TaxData>>()
-        .await
-        .map_err(|e| anyhow!("Could not fetch tax data: {}", e))?
+    Ok(reqwest::get(&uri)
+        .await?
+        .json::<Vec<TaxData>>()
+        .await?
         .into_iter()
         .filter_map(|data| TaxDataParsed::try_from(data).ok())
         .collect::<Vec<TaxDataParsed>>())

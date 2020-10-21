@@ -3,10 +3,10 @@
 use std::collections::{HashMap, HashSet};
 use std::env;
 
-use anyhow::{anyhow, Result};
-use async_std::fs;
+use anyhow::Result;
 use dotenv::dotenv;
 use serde::Deserialize;
+use tokio::fs;
 
 use states::STATES;
 
@@ -35,7 +35,7 @@ struct Response {
     data: Vec<Category>,
 }
 
-#[async_std::main]
+#[tokio::main]
 async fn main() {
     dotenv().ok();
     match run().await {
@@ -75,16 +75,19 @@ async fn run() -> Result<()> {
 }
 
 async fn get_categories() -> Result<Vec<Category>> {
+    let client = reqwest::Client::new();
     let api_key = env::var("NPS_KEY")?;
     let uri = format!(
         "https://developer.nps.gov/api/v1/activities/parks?api_key={}",
         api_key
     );
-    let response: Response = surf::get(uri)
-        .set_header("accept", "application/json")
-        .recv_json()
-        .await
-        .map_err(|e| anyhow!("Could not fetch data: {}", e))?;
+    let response: Response = client
+        .get(&uri)
+        .header("accept", "application/json")
+        .send()
+        .await?
+        .json()
+        .await?;
     Ok(response.data)
 }
 

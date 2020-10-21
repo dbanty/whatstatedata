@@ -5,7 +5,7 @@ use futures::future::try_join4;
 
 use maryland::{demographic, quality_of_life, taxes, workforce};
 
-#[async_std::main]
+#[tokio::main]
 async fn main() {
     match run().await {
         Ok(_) => println!("Success!"),

@@ -1,8 +1,8 @@
 use std::collections::HashMap;
 
 use anyhow::{anyhow, Result};
-use async_std::fs;
 use serde::Deserialize;
+use tokio::fs;
 
 use states::STATES_BY_NAME;
 
@@ -55,10 +55,10 @@ pub async fn quality_of_life() -> Result<()> {
 
 async fn get_qol() -> Result<Vec<QOLParsed>> {
     let uri = format!("{}{}", BASE_URL, PATH);
-    Ok(surf::get(uri)
-        .recv_json::<Vec<QOLData>>()
-        .await
-        .map_err(|e| anyhow!("Could not fetch quality of life data: {}", e))?
+    Ok(reqwest::get(&uri)
+        .await?
+        .json::<Vec<QOLData>>()
+        .await?
         .into_iter()
         .filter_map(|data| QOLParsed::try_from(data).ok())
         .collect::<Vec<QOLParsed>>())
