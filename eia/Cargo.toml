@@ -9,7 +9,7 @@ description = "Download and parse data from https://www.eia.gov/developer/"
 serde = { version = "1.0.117", features = ["derive"] }
 serde_json = "1.0.59"
 dotenv = "0.15.0"
-anyhow = "1.0.33"
+anyhow = "1.0.36"
 states = {path="../states"}
 futures = "0.3.6"
 tokio = { version = "0.2.22", features = ["macros", "rt-core", "fs"] }
