@@ -7,7 +7,7 @@ description = "Maryland publishes a bunch of data comparing different states. Th
 
 [dependencies]
 tokio = { version = "0.2.22", features = ["macros", "rt-core", "fs"] }
-reqwest = { version = "0.10.8", features = ["json"] }
+reqwest = { version = "0.11.2", features = ["json"] }
 serde = { version = "1.0.117", features = ["derive"] }
 serde_json = "1.0.59"
 anyhow = "1.0.33"
